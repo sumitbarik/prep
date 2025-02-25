@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <changeSet author="author.name" id="1 Created new table">
+        <!-- Validations -->
+<!--        <preConditions>-->
+<!--            <not>-->
+<!--                <tableExists tableName="EMPLOYEE"/>-->
+<!--            </not>-->
+<!--        </preConditions>-->
+<!--         Create Table -->
+        <createTable tableName="EMPLOYEE">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="role" type="VARCHAR(255)"/>
+            <column name="department" type="VARCHAR(255)"/>
+        </createTable>
+        <createTable tableName="ADDRESS">
+            <column autoIncrement="true" name="address_id" type="bigint">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="house" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="lane" type="VARCHAR(255)"/>
+            <column name="city" type="VARCHAR(255)"/>
+            <column name="state" type="VARCHAR(255)"/>
+            <column name="pin" type="VARCHAR(255)"/>
+        </createTable>
+
+        <addForeignKeyConstraint constraintName="fk_emp2add"
+                                 baseTableName="EMPLOYEE"
+                                 baseColumnNames="id"
+                                 referencedTableName="ADDRESS"
+                                 referencedColumnNames="address_id"/>
+
+
+<!--        <addForeignKeyConstraint constraintName="fk_add2emp"-->
+<!--                                 baseTableName="ADDRESS"-->
+<!--                                 baseColumnNames="address_id"-->
+<!--                                 referencedTableName="EMPLOYEE"-->
+<!--                                 referencedColumnNames="address_id"/>-->
+<!--        &lt;!&ndash; Roll back &ndash;&gt;-->
+<!--        <rollback>-->
+<!--            <dropTable tableName="EMPLOYEE"/>-->
+<!--        </rollback>-->
+        <comment>Created new table named 'Employee'</comment>
+    </changeSet>
+</databaseChangeLog>

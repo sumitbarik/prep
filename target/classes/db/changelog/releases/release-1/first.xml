@@ -36,18 +36,6 @@
             <column name="pin" type="VARCHAR(255)"/>
         </createTable>
 
-        <addForeignKeyConstraint constraintName="fk_emp2add"
-                                 baseTableName="EMPLOYEE"
-                                 baseColumnNames="id"
-                                 referencedTableName="ADDRESS"
-                                 referencedColumnNames="address_id"/>
-
-
-<!--        <addForeignKeyConstraint constraintName="fk_add2emp"-->
-<!--                                 baseTableName="ADDRESS"-->
-<!--                                 baseColumnNames="address_id"-->
-<!--                                 referencedTableName="EMPLOYEE"-->
-<!--                                 referencedColumnNames="address_id"/>-->
 <!--        &lt;!&ndash; Roll back &ndash;&gt;-->
 <!--        <rollback>-->
 <!--            <dropTable tableName="EMPLOYEE"/>-->

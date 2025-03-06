@@ -29,6 +29,6 @@ public class Address {
     @Column
     private String pin;
 
-    @OneToOne(mappedBy = "address")
-    private EmployeeEntity employee;
+//    @OneToOne(mappedBy = "address")
+//    private Employee employee;
 }
